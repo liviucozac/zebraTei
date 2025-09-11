@@ -1,14 +1,15 @@
-// src/App.js
 import React from "react";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import Scanner from "./components/Scanner";
 import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* Home = Scanner directly */}
+        <Route path="/" element={<Scanner />} />
+        {/* Product details */}
         <Route path="/product/:ean" element={<ProductDetails />} />
       </Routes>
     </Router>

@@ -1,58 +1,42 @@
 // src/components/Scanner.jsx
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { BrowserMultiFormatReader } from "@zxing/browser";
 import { useNavigate } from "react-router-dom";
 
-const Scanner = () => {
+function Scanner() {
   const videoRef = useRef(null);
   const navigate = useNavigate();
-  const [loadingEAN, setLoadingEAN] = useState(null);
+  const codeReader = new BrowserMultiFormatReader();
 
   useEffect(() => {
-    const codeReader = new BrowserMultiFormatReader();
+    let controls;
 
     if (videoRef.current) {
-      codeReader.decodeFromVideoDevice(
-        null,
-        videoRef.current,
-        (result, err) => {
+      codeReader
+        .decodeFromVideoDevice(null, videoRef.current, (result, err, c) => {
+          controls = c; // store controls so we can stop later
           if (result) {
             const ean = result.getText();
-            console.log("Cod scanat:", ean);
-
-            setLoadingEAN(ean); // afișăm mesajul de încărcare
-
-            // după 2 secunde, navigăm la pagina produsului
-            setTimeout(() => {
-              navigate(`/product/${ean}`);
-            }, 2000);
+            navigate(`/product/${ean}`);
           }
-          if (err) {
-            // ignorăm erorile când nu se detectează cod în frame
-          }
-        }
-      );
+        })
+        .catch((err) => console.error("Camera error:", err));
     }
 
+    // ✅ proper cleanup
     return () => {
-      codeReader?.stopContinuousDecode?.();
-      codeReader?.reset?.();
+      if (controls) {
+        controls.stop();
+      }
     };
   }, [navigate]);
 
   return (
     <div>
-      <h2>Scanează produsul</h2>
-      {loadingEAN ? (
-        <p><strong>Se încarcă produsul…</strong></p>
-      ) : (
-        <video
-          ref={videoRef}
-          style={{ width: "100%", border: "1px solid black" }}
-        />
-      )}
+      <h2>Scanează codul de bare</h2>
+      <video ref={videoRef} style={{ width: "100%" }} />
     </div>
   );
-};
+}
 
 export default Scanner;
