@@ -3,15 +3,15 @@ import React from "react";
 import { useParams, Link } from "react-router-dom";
 import products from "../data/products";
 
-const ProductDetails = () => {
+function ProductDetails() {
   const { ean } = useParams();
   const product = products.find((p) => p.ean === ean);
 
   if (!product) {
     return (
       <div>
-        <h2>Product not found</h2>
-        <Link to="/">Back to Home</Link>
+        <h2>Produsul nu a fost găsit</h2>
+        <Link to="/">⬅ Înapoi la pagina principală</Link>
       </div>
     );
   }
@@ -22,20 +22,22 @@ const ProductDetails = () => {
       <img
         src={product.image}
         alt={product.name}
-        style={{ maxWidth: "200px", display: "block", marginBottom: "10px" }}
+        style={{ width: "200px", height: "auto", marginBottom: "20px" }}
       />
       <p><strong>EAN:</strong> {product.ean}</p>
-      <h3>Availability by Location:</h3>
+
+      <h3>Disponibilitate pe locații:</h3>
       <ul>
-        {Object.entries(product.availability).map(([location, qty]) => (
-          <li key={location}>
-            {location}: {qty} pcs
+        {Object.entries(product.Disponibilitate).map(([locatie, stoc]) => (
+          <li key={locatie}>
+            {locatie}: {stoc} buc
           </li>
         ))}
       </ul>
-      <Link to="/">⬅ Back to Scanner</Link>
+
+      <Link to="/">⬅ Înapoi la scanner</Link>
     </div>
   );
-};
+}
 
 export default ProductDetails;

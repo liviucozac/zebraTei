@@ -2,33 +2,43 @@
 
 const products = [
   {
-    ean: "3574661744858",
-    name: "Listerine Mouthwash Cool Mint 1L",
-    image: "/images/listerine.jpg",
-    availability: {
-      location1: 3,
-      location2: 5,
-      location3: 1,
+    ean: "7613036047166",
+    name: "Gerber Organic for Baby - Mazare, Broccoli si Dovlecel, 125 g",
+    image: "/images/GerberMazareBrocoliDovlecel_p1.jpg",
+    Disponibilitate: {
+      Barbu: 3,
+      Dristor: 5,
+      Plaza: 1,
     },
   },
   {
-    ean: "6421930326399",
-    name: "Biseptol Apa de Gura 480ml Dacia Plant",
-    image: "/images/biseptol.jpg",
-    availability: {
-      location1: 2,
-      location2: 4,
-      location3: 6,
+    ean: "8445291761292",
+    name: "Gerber Organic for Baby - Morcovi si Cartofi Dulci, 125 g",
+    image: "/images/GerberMorcoviCartofiDulci_p1.jpg",
+    Disponibilitate: {
+      Barbu: 1,
+      Dristor: 4,
+      Plaza: 2,
     },
   },
   {
-    ean: "6421971000099",
-    name: "Maraton Forte 20 capsule Parapharm",
-    image: "/images/maraton.jpg",
-    availability: {
-      location1: 10,
-      location2: 8,
-      location3: 0,
+    ean: "7613036047227",
+    name: "Gerber Organic for Baby - Mar si Sfecla Rosie, 125 g",
+    image: "/images/GerberMarSfeclaRosie_p1.jpg",
+    Disponibilitate: {
+      Barbu: 9,
+      Dristor: 5,
+      Plaza: 7,
+    },
+  },
+  {
+    ean: "7613036047517",
+    name: "Gerber Organic for Baby - Mar, Caisa si Piersica, 125 g",
+    image: "/images/GerberMarCaisaPiersica_p1.jpg",
+    Disponibilitate: {
+      Barbu: 6,
+      Dristor: 3,
+      Plaza: 4,
     },
   },
 ];
