@@ -4,7 +4,7 @@ const products = [
   {
     ean: "7613036047166",
     name: "Gerber Organic for Baby - Mazăre, Broccoli și Dovlecel, 125 g",
-    image: "/images/GerberMazareBroccoliDovlecel_p1.jpg",
+    image: process.env.PUBLIC_URL + "/images/GerberMazareBroccoliDovlecel_p1.jpg",
     Disponibilitate: {
       Barbu: 3,
       Dristor: 5,
@@ -14,7 +14,7 @@ const products = [
   {
     ean: "8445291761292",
     name: "Gerber Organic for Baby - Morcovi și Cartofi Dulci, 125 g",
-    image: "/images/GerberMorcoviCartofiDulci_p1.jpg",
+    image: process.env.PUBLIC_URL + "/images/GerberMorcoviCartofiDulci_p1.jpg",
     Disponibilitate: {
       Barbu: 1,
       Dristor: 4,
@@ -24,7 +24,7 @@ const products = [
   {
     ean: "7613036047227",
     name: "Gerber Organic for Baby - Măr și Sfeclă Roșie, 125 g",
-    image: "/images/GerberMarSfeclaRosie_p1.jpg",
+    image: process.env.PUBLIC_URL + "/images/GerberMereSfeclaRosie_p1.jpg",
     Disponibilitate: {
       Barbu: 9,
       Dristor: 5,
