@@ -1,38 +1,160 @@
-.App {
+/* General reset */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Page container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: #66b32e; /* Farmacia Tei green */
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+/* Links */
+a {
+  color: #66b32e;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Product card */
+.product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.product-card img {
+  display: block;
+  max-width: 200px;
+  margin: 0 auto 1rem auto;
+  border-radius: 4px;
+}
+
+/* Product details */
+.product-details {
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  background: #fafafa;
+  margin-top: 1rem;
+}
+
+.product-details img {
+  display: block;
+  max-width: 250px;
+  margin: 1rem auto;
+}
+
+/* Availability list */
+.availability {
+  margin-top: 1rem;
+}
+
+.availability li {
+  margin: 0.25rem 0;
+}
+
+/* Back link */
+.back-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #66b32e;
+}
+
+/* Scanner */
+.scanner-title {
+  color: #2e7d32;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.scanner-box {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  border: 2px solid #2e7d32;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 1rem auto;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.scanner-video {
+  width: 100%;
+  height: auto;
+}
+
+.error-text {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Back button */
+.btn-back {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #2e7d32; /* Farmacia Tei green */
   color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-back:hover {
+  background-color: #256629; /* darker green on hover */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.app-header {
+  position: sticky;      /* keep it stuck at the top */
+  top: 0;                /* stick to the very top */
+  z-index: 1000;         /* make sure it stays above content */
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 16px;
+  background: #fff;      /* or your brand color */
+  border-bottom: 1px solid #eee;
+}
+
+.app-logo {
+  height: 60px;
+  max-width: 100%;
 }
