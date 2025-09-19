@@ -9,8 +9,13 @@ function App() {
     <Router>
       {/* Global Logo/Header */}
       <header className="app-header">
-        <img src="/logo.jpg" alt="App Logo" className="app-logo" />
+        <img
+          src="https://i.imgur.com/YdXG4sL.png"
+          alt="App Logo"
+          className="app-logo"
+        />
       </header>
+
 
       <Routes>
         {/* Home = Scanner directly */}
