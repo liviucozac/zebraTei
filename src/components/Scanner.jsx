@@ -1,40 +1,43 @@
-// src/components/Scanner.jsx
-import React, { useEffect, useRef } from "react";
-import { BrowserMultiFormatReader } from "@zxing/browser";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { BrowserMultiFormatReader } from "@zxing/library";
+import products from "../data/products";
 
 function Scanner() {
-  const videoRef = useRef(null);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
-  const codeReader = new BrowserMultiFormatReader();
 
   useEffect(() => {
-    let controls;
+    const codeReader = new BrowserMultiFormatReader();
 
-    if (videoRef.current) {
-      codeReader
-        .decodeFromVideoDevice(null, videoRef.current, (result, err, c) => {
-          controls = c; // store controls so we can stop later
-          if (result) {
-            const ean = result.getText();
+    codeReader
+      .decodeFromVideoDevice(null, "video", (result, err) => {
+        if (result) {
+          const ean = result.getText();
+          const product = products.find((p) => p.ean === ean);
+
+          if (product) {
             navigate(`/product/${ean}`);
+          } else {
+            setError("Produsul nu a fost găsit în baza de date");
           }
-        })
-        .catch((err) => console.error("Camera error:", err));
-    }
+          codeReader.reset();
+        }
+      })
+      .catch((err) => setError(err.message));
 
-    // ✅ proper cleanup
     return () => {
-      if (controls) {
-        controls.stop();
-      }
+      codeReader.reset();
     };
   }, [navigate]);
 
   return (
-    <div>
-      <h2>Scanează codul de bare</h2>
-      <video ref={videoRef} style={{ width: "100%" }} />
+    <div className="container">
+      <h1 className="scanner-title">Scanează codul de bare</h1>
+      <div className="scanner-box">
+        <video id="video" className="scanner-video"></video>
+      </div>
+      {error && <p className="error-text">{error}</p>}
     </div>
   );
 }
