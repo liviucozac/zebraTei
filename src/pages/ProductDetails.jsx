@@ -10,7 +10,7 @@ function ProductDetails() {
     return <h2>Produsul nu a fost găsit în baza de date</h2>;
   }
 
-  // helper for stock status
+  // stock status color
   const getStatusClass = (qty) => {
     if (qty === 0) return "status unavailable";
     if (qty <= 5) return "status critical";
@@ -19,6 +19,14 @@ function ProductDetails() {
 
   return (
     <div className="container">
+      {/* Logo */}
+      <img
+        src="https://i.imgur.com/XNt8faA.png"
+        className="app-logo"
+        alt="BebeTei logo"
+      />
+
+      {/* Product details */}
       <div className="product-details">
         <h1>{product.name}</h1>
         <img src={product.image} alt={product.name} />
@@ -44,13 +52,12 @@ function ProductDetails() {
             <div className="availability-card" key={loc}>
               <h3>{loc}</h3>
               <p>{data.address}</p>
-              <span className={getStatusClass(data.qty)}>
-                {data.qty} buc
-              </span>
+              <span className={getStatusClass(data.qty)}>{data.qty} buc</span>
             </div>
           ))}
         </div>
 
+        {/* Back to scanner */}
         <Link to="/" className="btn-back">
           ← Înapoi la scanner
         </Link>
