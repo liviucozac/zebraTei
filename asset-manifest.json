@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/zebraTei/static/css/main.25e4d8d8.css",
+    "main.js": "/zebraTei/static/js/main.40dc304a.js",
+    "index.html": "/zebraTei/index.html",
+    "main.25e4d8d8.css.map": "/zebraTei/static/css/main.25e4d8d8.css.map",
+    "main.40dc304a.js.map": "/zebraTei/static/js/main.40dc304a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.25e4d8d8.css",
+    "static/js/main.40dc304a.js"
+  ]
+}
