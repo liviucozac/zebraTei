@@ -1,67 +1,49 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { BrowserMultiFormatReader } from "@zxing/library";
+import { BrowserMultiFormatReader, NotFoundException } from "@zxing/library";
 import products from "../data/products";
+import { useStore } from "../app/store";
 
 function Scanner() {
-  const [error, setError] = useState(null);
-  const [started, setStarted] = useState(false);
+  const videoRef = useRef(null);
   const navigate = useNavigate();
+  const { addScannedProduct } = useStore();
 
-  const startScanner = () => {
+  useEffect(() => {
     const codeReader = new BrowserMultiFormatReader();
-    console.log("Starting camera...");
 
     codeReader
-      .decodeFromVideoDevice(null, "video", (result, err) => {
+      .decodeFromVideoDevice(null, videoRef.current, (result, err) => {
         if (result) {
-          const ean = result.getText();
-          console.log("Scanned EAN:", ean);
+          const scannedEAN = result.getText();
+          console.log("Scanned EAN:", scannedEAN);
 
-          const product = products.find((p) => p.ean === ean);
+          const product = products.find((p) => p.ean === scannedEAN);
 
           if (product) {
-            navigate(`/product/${ean}`);
+            addScannedProduct(product);
+            navigate(`/product/${product.ean}`);
           } else {
-            setError("Produsul nu a fost găsit în baza de date");
+            alert(`Produsul cu EAN ${scannedEAN} nu a fost găsit.`);
           }
-          codeReader.reset();
         }
-
-        if (err && !(err.name === "NotFoundException")) {
-          console.error("Scanner error:", err);
-          setError(err.message);
+        if (err && !(err instanceof NotFoundException)) {
+          console.error("Scan error:", err);
         }
       })
-      .catch((err) => {
-        console.error("Camera init failed:", err);
-        setError(err.message);
-      });
+      .catch((err) => console.error(err));
 
-    setStarted(true);
-  };
+    return () => {
+      codeReader.reset();
+    };
+  }, [addScannedProduct, navigate]);
 
   return (
     <div className="container">
-      <h1 className="scanner-title">Scanează codul de bare</h1>
-
-      {!started && (
-        <button className="btn-back" onClick={startScanner}>
-          Start Scanner
-        </button>
-      )}
-
+      <h2 className="scanner-title">Scanner activ...</h2>
       <div className="scanner-box">
-        <video
-          id="video"
-          className="scanner-video"
-          autoPlay
-          muted
-          playsInline
-        ></video>
+        <video ref={videoRef} className="scanner-video" />
       </div>
-
-      {error && <p className="error-text">{error}</p>}
     </div>
   );
 }

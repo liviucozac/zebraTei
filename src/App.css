@@ -245,3 +245,134 @@ a:hover {
 .status.critical { background: #fff3e5; color: #E67E22; }
 .status.unavailable { background: #fdeaea; color: #E74C3C; }
 
+/* General reset */
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Page container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: 1.8rem;
+  color: #57B33E; /* Farmacia Tei green */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+h2 {
+  font-size: 1.4rem;
+  color: #8e44ed; /* BebeTei purple */
+}
+
+/* Links */
+a {
+  color: #57B33E;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Scanner */
+.scanner-title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #8e44ed; /* purple */
+}
+
+.scanner-box {
+  border: 2px solid #57B33E;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 1rem auto;
+  padding: 2rem;
+  background: #fafafa;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #57B33E;
+  font-weight: bold;
+}
+
+.btn-scanner {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: #8e44ed; /* purple */
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-scanner:hover {
+  background-color: #6d29b7; /* darker purple */
+}
+
+/* Product grid (mini cards) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin: 0 auto;
+  width: 95%;
+}
+
+.product-card-mini {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 0.6rem;
+  background: #fafafa;
+  text-align: center;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 120px;
+}
+
+.product-card-mini h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.product-card-mini p {
+  margin: 0.3rem 0 0.6rem;
+  color: #555;
+  font-size: 0.85rem;
+}
+
+.status {
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  background: #eaf6ea;
+  color: #57B33E;
+  display: inline-block;
+}
+
