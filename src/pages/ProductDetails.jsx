@@ -19,13 +19,8 @@ function ProductDetails() {
 
   return (
     <div className="container">
-      {/* Logo */}
-      <img
-        src="https://i.imgur.com/XNt8faA.png"
-        className="app-logo"
-        alt="BebeTei logo"
-      />
 
+      
       {/* Product details */}
       <div className="product-details">
         <h1>{product.name}</h1>
