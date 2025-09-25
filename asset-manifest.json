@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/zebraTei/static/css/main.444d0a05.css",
-    "main.js": "/zebraTei/static/js/main.c01d8960.js",
+    "main.css": "/zebraTei/static/css/main.8319c6c1.css",
+    "main.js": "/zebraTei/static/js/main.5c016b57.js",
     "index.html": "/zebraTei/index.html",
-    "main.444d0a05.css.map": "/zebraTei/static/css/main.444d0a05.css.map",
-    "main.c01d8960.js.map": "/zebraTei/static/js/main.c01d8960.js.map"
+    "main.8319c6c1.css.map": "/zebraTei/static/css/main.8319c6c1.css.map",
+    "main.5c016b57.js.map": "/zebraTei/static/js/main.5c016b57.js.map"
   },
   "entrypoints": [
-    "static/css/main.444d0a05.css",
-    "static/js/main.c01d8960.js"
+    "static/css/main.8319c6c1.css",
+    "static/js/main.5c016b57.js"
   ]
 }
