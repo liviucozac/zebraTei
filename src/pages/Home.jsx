@@ -1,43 +1,57 @@
+// src/pages/Home.jsx
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import products from "../data/products";
-import ProductCard from "../components/ProductCard";
-import { useStore } from "../app/store";
 
 function Home() {
-  const navigate = useNavigate();
-  const { lastScanned } = useStore();
+  // Example: last 3 scanned + 3 recommended
+  const lastScanned = products.slice(0, 3);
+  const recommended = products.slice(1, 4);
 
-  const recommended = products.slice(0, 3);
+  const getStatus = (qty) => {
+    if (qty > 10) return <span className="status available">În stoc</span>;
+    if (qty > 0) return <span className="status critical">Stoc limitat ({qty})</span>;
+    return <span className="status unavailable">Stoc epuizat</span>;
+  };
 
   return (
     <div className="container">
-      <h1>Farmacia Tei Scanner</h1>
-      <p>Scanează rapid și află detalii complete despre produse</p>
+      {/* Hero */}
+      <section className="my-12">
+        <h1>Farmacia Tei Scanner</h1>
+        <p>Scanează rapid și află detalii complete despre produse</p>
+      </section>
 
       {/* Scanner section */}
       <section>
         <h2 className="scanner-title">Scanează un produs</h2>
         <div className="scanner-box">
-          <span>📷</span>
-          Camera va apărea aici
+          <p>📷 Camera va apărea aici</p>
+          <Link to="/scanner" className="btn-scanner">
+            Pornește scannerul
+          </Link>
         </div>
-        <button className="btn-scanner" onClick={() => navigate("/scanner")}>
-          Pornește scannerul
-        </button>
       </section>
 
       {/* Ultimele produse scanate */}
       <section>
         <h2>Ultimele produse scanate</h2>
         <div className="product-grid">
-          {lastScanned.length === 0 ? (
-            <p>Încă nu ai scanat niciun produs</p>
-          ) : (
-            lastScanned.map((p) => (
-              <ProductCard key={p.ean} product={p} />
-            ))
-          )}
+          {lastScanned.map((p) => {
+            // total stock = sum of all disponibilitate.qty
+            const totalQty = Object.values(p.disponibilitate).reduce(
+              (sum, store) => sum + store.qty,
+              0
+            );
+            return (
+              <div key={p.ean} className="product-card-mini">
+                <h3>{p.name}</h3>
+                <p>EAN: {p.ean}</p>
+                {getStatus(totalQty)}
+                <Link to={`/product/${p.ean}`}>Vezi detalii</Link>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -45,9 +59,20 @@ function Home() {
       <section>
         <h2>Produse recomandate</h2>
         <div className="product-grid">
-          {recommended.map((p) => (
-            <ProductCard key={p.ean} product={p} />
-          ))}
+          {recommended.map((p) => {
+            const totalQty = Object.values(p.disponibilitate).reduce(
+              (sum, store) => sum + store.qty,
+              0
+            );
+            return (
+              <div key={p.ean} className="product-card-mini">
+                <h3>{p.name}</h3>
+                <p>EAN: {p.ean}</p>
+                {getStatus(totalQty)}
+                <Link to={`/product/${p.ean}`}>Vezi detalii</Link>
+              </div>
+            );
+          })}
         </div>
       </section>
     </div>
