@@ -1,5 +1,10 @@
 html {
   scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 /* General reset */
@@ -15,27 +20,54 @@ body {
 .container {
   max-width: 900px;
   margin: 0 auto;
-  padding: 5rem 1rem 1rem; /* add top padding */
+  padding: 5rem 1rem 1rem; /* top padding for logo/buttons */
   text-align: center;
+  padding-inline: 1rem;    /* 🔹 equal left/right margin */
 }
-
 
 section {
   margin-bottom: 1.5rem; /* reduce spacing between sections */
 }
 
+/* Header with logo */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;   /* reduced */
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.app-logo {
+  height: 55px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
 .quick-links {
-  margin: 1rem auto;       /* spacing below logo */
+  position: sticky;
+  top: 60px; /* sits right below logo */
+  z-index: 1000;
   display: flex;
   justify-content: center;
   gap: 1rem;
-  width: 80%;              /* make them take more space */
-  max-width: 600px;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 1rem;
+  padding: 0.5rem 1rem;   /* 🔹 padding inside the bar */
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
 .btn-link {
-  flex: 1;                 /* equal width for both */
-  padding: 0.8rem 1rem;
+  flex: 1;
+  padding: 0.8rem;
   background: #57B33E;
   color: #fff;
   font-weight: 600;
@@ -58,7 +90,7 @@ h1, h2, h3 {
 
 h1 {
   font-size: 1.8rem;
-  margin: 0.5rem 0 0.75rem 0; /* reduce top space */
+  margin: 0.75rem 0; /* tighter space */
   color: #57B33E;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
@@ -144,7 +176,7 @@ a:hover {
 /* Scanner */
 .scanner-title {
   font-size: 1.5rem;
-  margin: 2rem 0 1rem 0; /* tighten spacing */
+  margin: 2rem 0 1rem 0;
   color: #8e44ed;
 }
 
@@ -210,26 +242,6 @@ a:hover {
 
 .btn-back:hover {
   background-color: #256629;
-}
-
-/* Header */
-.app-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 16px;
-  background: #fff;
-  border-bottom: 1px solid #eee;
-}
-
-.app-logo {
-  height: 60px;
-  max-width: 100%;
-  display: block;
-  margin: 0 auto;
 }
 
 /* Availability grid */
@@ -334,8 +346,12 @@ a:hover {
   background: #d6f0d6;
 }
 
-/* 🔹 Scale down text/images on tiny phones */
+/* Scale down text/images on tiny phones */
 @media (max-width: 400px) {
+  .btn-link {
+    font-size: 12px;
+    padding: 0.6rem;
+  }
   .product-card-mini {
     font-size: 0.75rem;
     padding: 0.4rem;
