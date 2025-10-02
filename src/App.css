@@ -19,35 +19,35 @@ body {
   text-align: center;
 }
 
-/* Quick navigation buttons (below logo) */
+
+section {
+  margin-bottom: 1.5rem; /* reduce spacing between sections */
+}
+
 .quick-links {
-  position: fixed;
-  top: 80px; /* sits below logo/header */
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1000;
+  margin: 1rem auto;       /* spacing below logo */
   display: flex;
+  justify-content: center;
   gap: 1rem;
-  background: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  width: auto;
+  width: 80%;              /* make them take more space */
+  max-width: 600px;
 }
 
 .btn-link {
-  padding: 0.5rem 1rem;
+  flex: 1;                 /* equal width for both */
+  padding: 0.8rem 1rem;
   background: #57B33E;
   color: #fff;
   font-weight: 600;
   border-radius: 6px;
   text-decoration: none;
   transition: background-color 0.2s ease-in-out;
-  font-size: 0.85rem;
+  font-size: 14px;
+  text-align: center;
 }
 
 .btn-link:hover {
-  background: #256629;
+  background-color: #256629;
 }
 
 /* Headings */
@@ -58,8 +58,8 @@ h1, h2, h3 {
 
 h1 {
   font-size: 1.8rem;
-  margin-top: 2.5rem; /* extra space below quick-links */
-  color: #57B33E; /* Farmacia Tei green */
+  margin: 0.5rem 0 0.75rem 0; /* reduce top space */
+  color: #57B33E;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
@@ -144,7 +144,7 @@ a:hover {
 /* Scanner */
 .scanner-title {
   font-size: 1.5rem;
-  margin: 3rem 0 1rem;
+  margin: 2rem 0 1rem 0; /* tighten spacing */
   color: #8e44ed;
 }
 
