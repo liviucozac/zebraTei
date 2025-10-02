@@ -16,6 +16,16 @@ function Home() {
 
   return (
     <div className="container">
+      {/* Fixed quick-links buttons */}
+      <div className="quick-links">
+        <a href="#ultimele-produse" className="btn-link">
+          Ultimele produse scanate
+        </a>
+        <a href="#produse-recomandate" className="btn-link">
+          Produse recomandate
+        </a>
+      </div>
+
       {/* Hero */}
       <section className="my-12">
         <h1>Farmacia Tei Scanner</h1>
@@ -23,10 +33,9 @@ function Home() {
       </section>
 
       {/* Scanner section */}
-      <section>
+      <section id="scanner">
         <h2 className="scanner-title">Scanează un produs</h2>
         <div className="scanner-box">
-          <p>📷 Camera va apărea aici</p>
           <Link to="/scanner" className="btn-scanner">
             Pornește scannerul
           </Link>
@@ -34,11 +43,10 @@ function Home() {
       </section>
 
       {/* Ultimele produse scanate */}
-      <section>
+      <section id="ultimele-produse">
         <h2>Ultimele produse scanate</h2>
         <div className="product-grid">
           {lastScanned.map((p) => {
-            // total stock = sum of all disponibilitate.qty
             const totalQty = Object.values(p.disponibilitate).reduce(
               (sum, store) => sum + store.qty,
               0
@@ -56,7 +64,7 @@ function Home() {
       </section>
 
       {/* Produse recomandate */}
-      <section>
+      <section id="produse-recomandate">
         <h2>Produse recomandate</h2>
         <div className="product-grid">
           {recommended.map((p) => {
