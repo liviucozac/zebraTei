@@ -13,9 +13,12 @@ body {
 
 /* Page container */
 .container {
-  max-width: 95%;
-  margin: 15px auto;
+  max-width: 900px;      /* or 100% if you want it fluid */
+  width: 100%;
+  margin: 0 auto;        /* centers perfectly */
+  padding: 0 1rem;       /* equal space left & right */
   text-align: center;
+  box-sizing: border-box; /* makes padding count inside width */
 }
 
 .my-12 p {
@@ -234,15 +237,6 @@ a:hover {
   
 }
 
-/* Availability grid */
-.availability-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.3rem;
-  width: 95%;
-  margin: 0 auto;
-}
-
 .availability-card {
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -279,13 +273,17 @@ a:hover {
 }
 
 /* Product grid (homepage mini cards) */
-.product-grid {
+.product-grid,
+.availability-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.8rem;
   margin: 0 auto;
-  width: 95%;
+  width: 100%;          /* full width */
+  max-width: 900px;     /* keep consistent with container */
+  box-sizing: border-box;
 }
+
 
 .product-card-mini {
   border: 1px solid #ddd;
