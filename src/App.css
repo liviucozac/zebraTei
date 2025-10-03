@@ -18,8 +18,12 @@ body {
   text-align: center;
 }
 
-.my-12 p {#scanner
+.my-12 p {
   margin: 0.5rem 0.1rem;   /* small balanced spacing */
+}
+
+#scanner {
+  margin-top: 1rem; /* or whatever spacing you want */
 }
 
 /* Quick navigation buttons (below logo) */
