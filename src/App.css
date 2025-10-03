@@ -19,7 +19,7 @@ body {
 }
 
 .my-12 p {#scanner
-  margin: 0.5rem 0 1rem;   /* small balanced spacing */
+  margin: 0.5rem 0.1rem;   /* small balanced spacing */
 }
 
 /* Quick navigation buttons (below logo) */
