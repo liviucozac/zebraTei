@@ -1,10 +1,5 @@
 html {
   scroll-behavior: smooth;
-  box-sizing: border-box;
-}
-
-*, *:before, *:after {
-  box-sizing: inherit;
 }
 
 /* General reset */
@@ -18,68 +13,38 @@ body {
 
 /* Page container */
 .container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 5rem 1rem 1rem; /* top padding for logo/buttons */
+  max-width: 95%;
+  margin: 15px auto;
   text-align: center;
-  padding-inline: 1rem;    /* 🔹 equal left/right margin */
 }
 
-section {
-  margin-bottom: 1.5rem; /* reduce spacing between sections */
+.my-12 p {#scanner
+  margin: 0.5rem 0 1rem;   /* small balanced spacing */
 }
 
-/* Header with logo */
-.app-header {
-  position: sticky;
-  top: 0;
-  z-index: 1100;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 8px;   /* reduced */
-  background: #fff;
-  border-bottom: 1px solid #eee;
-}
-
-.app-logo {
-  height: 55px;
-  max-width: 100%;
-  display: block;
-  margin: 0 auto;
-}
-
+/* Quick navigation buttons (below logo) */
 .quick-links {
-  position: sticky;
-  top: 60px; /* sits right below logo */
-  z-index: 1000;
+  margin: 0 auto;  /* 🔹 small spacing below logo */
   display: flex;
   justify-content: center;
-  gap: 1rem;
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto 1rem;
-  padding: 0.5rem 1rem;   /* 🔹 padding inside the bar */
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  gap: 0.5rem;
+  width: 95%;
+  max-width: 95%;
 }
 
 .btn-link {
-  flex: 1;
-  padding: 0.8rem;
+  padding: 0.5rem 1rem;
   background: #57B33E;
   color: #fff;
   font-weight: 600;
   border-radius: 6px;
   text-decoration: none;
   transition: background-color 0.2s ease-in-out;
-  font-size: 14px;
-  text-align: center;
+  font-size: 0.85rem;
 }
 
 .btn-link:hover {
-  background-color: #256629;
+  background: #256629;
 }
 
 /* Headings */
@@ -90,7 +55,7 @@ h1, h2, h3 {
 
 h1 {
   font-size: 1.8rem;
-  margin: 0.75rem 0; /* tighter space */
+  margin: 0.5rem 0 1rem;   /* tighten spacing */
   color: #57B33E;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
@@ -176,7 +141,7 @@ a:hover {
 /* Scanner */
 .scanner-title {
   font-size: 1.5rem;
-  margin: 2rem 0 1rem 0;
+  margin: 0.5rem;
   color: #8e44ed;
 }
 
@@ -244,6 +209,27 @@ a:hover {
   background-color: #256629;
 }
 
+/* Header */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.app-logo {
+  height: 60px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+  
+}
+
 /* Availability grid */
 .availability-grid {
   display: grid;
@@ -307,8 +293,13 @@ a:hover {
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 140px;
+  justify-content: flex-start;  /* top first */
+  min-height: 200px;            /* force equal height */
+}
+
+.product-card-mini .status {
+  margin-top: auto;             /* push status to bottom */
+  margin-bottom: 0.4rem;
 }
 
 .product-card-mini img {
@@ -319,20 +310,21 @@ a:hover {
 }
 
 .product-card-mini h3 {
-  margin: 0;
+  margin: 0 0 0.5rem 0;
   font-size: 1rem;
   font-weight: 600;
   color: #222;
+  flex-grow: 1;                 /* take up remaining space */
 }
 
+
 .product-card-mini p {
-  margin: 0.3rem 0 0.6rem;
+  margin: 0.3rem 0;
   color: #555;
   font-size: 0.85rem;
 }
 
 .product-card-mini a {
-  margin-top: auto;
   padding: 0.4rem 0.8rem;
   border-radius: 5px;
   background: #eaf6ea;
@@ -346,12 +338,39 @@ a:hover {
   background: #d6f0d6;
 }
 
-/* Scale down text/images on tiny phones */
+.status {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+/* Green = plenty of stock */
+.status.available {
+  background-color: #eaf6ea;
+  color: #2e7d32;
+  border: 1px solid #57B33E;
+}
+
+/* Orange = critical stock */
+.status.critical {
+  background-color: #fff4e5;
+  color: #e67e22;
+  border: 1px solid #e67e22;
+}
+
+/* Red = out of stock */
+.status.unavailable {
+  background-color: #fdecea;
+  color: #c0392b;
+  border: 1px solid #c0392b;
+}
+
+
+/* 🔹 Scale down text/images on tiny phones */
 @media (max-width: 400px) {
-  .btn-link {
-    font-size: 12px;
-    padding: 0.6rem;
-  }
   .product-card-mini {
     font-size: 0.75rem;
     padding: 0.4rem;
