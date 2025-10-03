@@ -157,7 +157,7 @@ a:hover {
   border-radius: 8px;
   width: 100%;
   max-width: 400px;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 2rem auto;   /* ensure perfect centering */
   padding: 1rem;
   background: #fafafa;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
@@ -168,7 +168,9 @@ a:hover {
   gap: 0.5rem;
   color: #57B33E;
   font-weight: bold;
+  box-sizing: border-box;     /* 🔹 fix width shift issue */
 }
+
 
 .scanner-video {
   width: 100%;
@@ -182,9 +184,9 @@ a:hover {
   font-weight: bold;
 }
 
-/* Buttons */
 .btn-scanner {
   display: inline-block;
+  margin: 0 auto;             /* 🔹 center button horizontally */
   padding: 0.6rem 1.2rem;
   background-color: #57B33E;
   color: white;
@@ -193,6 +195,7 @@ a:hover {
   cursor: pointer;
   border: none;
   text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
 }
 
 .btn-scanner:hover {
