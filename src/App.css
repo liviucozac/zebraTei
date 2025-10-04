@@ -13,12 +13,28 @@ body {
 
 /* Page container */
 .container {
-  max-width: 900px;      /* or 100% if you want it fluid */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
   width: 100%;
-  margin: 0 auto;        /* centers perfectly */
-  padding: 0 1rem;       /* equal space left & right */
-  text-align: center;
-  box-sizing: border-box; /* makes padding count inside width */
+  height: 100%;
+  padding: 1rem;  /* scales better than px */
+  box-sizing: border-box;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 16px; /* will scale with device DPI */
+}
+
+button {
+  max-width: 90%; 
+  font-size: clamp(14px, 2vw, 18px); /* scales between 14–18px */
 }
 
 .my-12 p {
@@ -231,14 +247,21 @@ a:hover {
   background: #fff;
   border-bottom: 1px solid #eee;
 }
+body.dark-mode .app-logo {
+  background-color: #222; /* color only */
+}
+
 
 .app-logo {
   height: 60px;
   max-width: 100%;
   display: block;
   margin: 0 auto;
-  
+  padding: 8px;          /* moved here so both themes have it */
+  border-radius: 8px;    /* consistent shape */
+  background-color: #fff; /* light background */
 }
+
 
 .availability-card {
   border: 1px solid #ddd;
@@ -406,4 +429,119 @@ a:hover {
     max-width: 45px;
     max-height: 45px;
   }
+}
+
+
+/* ===========================
+   🌙 FINAL DARK MODE
+   =========================== */
+body.dark-mode {
+  background-color: #303030;
+  color: #eaeaea;
+}
+
+/* Card + page backgrounds */
+body.dark-mode .container,
+body.dark-mode .product-card,
+body.dark-mode .product-details,
+body.dark-mode .product-card-mini,
+body.dark-mode .availability-card,
+body.dark-mode .scanner-box {
+  background-color: #303030;
+  border-color: #555;
+  color: #eaeaea;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* Header + logo */
+body.dark-mode .app-header {
+  background-color: #222;
+  border-bottom: 1px solid #444;
+}
+
+body.dark-mode .app-logo {
+  background-color: #222;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+/* Buttons */
+body.dark-mode button,
+body.dark-mode .btn-link,
+body.dark-mode .btn-scanner,
+body.dark-mode .btn-back {
+  background-color: #57B33E;
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .btn-link:hover,
+body.dark-mode .btn-scanner:hover,
+body.dark-mode .btn-back:hover {
+  background-color: #4ba836;
+}
+
+/* "Vezi detalii" button */
+body.dark-mode .product-card-mini a {
+  background-color: #636363;
+  color: #fff;
+  border: none;
+}
+
+body.dark-mode .product-card-mini a:hover {
+  background-color: #777;
+}
+
+/* Headings + labels */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: #90ee90;
+}
+
+/* Text */
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode strong {
+  color: #eaeaea;
+}
+
+/* Availability tags */
+body.dark-mode .status.available {
+  background-color: #3c6e3c;
+  color: #dfffd6;
+}
+
+body.dark-mode .status.critical {
+  background-color: #8a5b1e;
+  color: #ffe5b0;
+}
+
+body.dark-mode .status.unavailable {
+  background-color: #782f2f;
+  color: #ffc4c4;
+}
+
+/* Smooth transitions */
+body,
+body * {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Toggle button */
+.dark-mode-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  font-size: 1.4rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #57B33E;
+  transition: transform 0.2s ease;
+}
+
+.dark-mode-toggle:hover {
+  transform: scale(1.2);
 }
