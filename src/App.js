@@ -29,7 +29,7 @@ function App() {
       <Router basename="/zebraTei">
         <header className="app-header">
           <img
-            src="https://i.imgur.com/XNt8faA.png"
+            src="https://i.imgur.com/0KYhJcK.png"
             alt="BebeTei Logo"
             className="app-logo"
           />

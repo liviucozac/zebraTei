@@ -17,14 +17,11 @@ function Home() {
   return (
     <div className="container">
       {/* Fixed quick-links buttons */}
-      <div className="quick-links">
-        <a href="#ultimele-produse" className="btn-link">
-          Ultimele produse scanate
-        </a>
-        <a href="#produse-recomandate" className="btn-link">
-          Produse recomandate
-        </a>
-      </div>
+      <div class="quick-links">
+  <a href="#ultimele-produse" class="btn-link">Ultimele produse scanate</a>
+  <a href="#produse-recomandate" class="btn-link">Produse recomandate</a>
+</div>
+
 
       {/* Hero */}
       <section className="my-12">
